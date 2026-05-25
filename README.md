@@ -1,7 +1,7 @@
 # 员工人事工资考勤管理系统
 
 基于 **Oracle + FastAPI + Vue3 + Element Plus** 的全栈人事管理系统。
-
+本项目使用Copilot自动化生成
 ---
 
 ## 项目结构
