@@ -1,0 +1,30 @@
+# 复制本文件为 config.toml 并填写你自己的配置后启动服务
+# cp config.toml.example config.toml
+
+[app]
+title = "员工人事工资考勤管理系统"
+version = "1.0.0"
+debug = false
+
+[server]
+host = "0.0.0.0"
+port = 8000
+
+[database]
+# Oracle 连接串，格式: oracle+oracledb://<用户名>:<密码>@<主机>:<端口>/?service_name=<服务名>
+url = "oracle+oracledb://YOUR_USER:YOUR_PASSWORD@localhost:1521/?service_name=XEPDB1"
+echo = false
+
+[jwt]
+# 生产环境请替换为随机长字符串（至少 32 位）
+secret_key = "change-me-in-production-super-secret-key"
+algorithm = "HS256"
+access_token_expire_minutes = 480
+
+[cors]
+origins = ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173"]
+
+[attendance]
+work_start_hour = 9
+work_start_minute = 0
+late_threshold_minutes = 60   # 迟到超过此分钟数视为缺勤
