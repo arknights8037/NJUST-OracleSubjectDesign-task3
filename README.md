@@ -11,7 +11,7 @@ zwb-item3/
 ├── database/
 │   └── init.sql          # Oracle DDL 及初始数据
 ├── server/               # FastAPI 后端
-│   ├── config.toml       # 配置文件（TOML）
+│   ├── config.toml.example  # 配置模板（复制为 config.toml 后填写数据库信息）
 │   ├── requirements.txt
 │   ├── run.py            # 启动入口
 │   └── app/
@@ -49,10 +49,28 @@ zwb-item3/
 
 ## 快速启动（Oracle）
 
-### 1. 后端
+### 1. 数据库初始化
+
+使用你的 Oracle 用户登录后执行：
+
+```sql
+-- 在 SQL*Plus / SQL Developer 中执行
+@database/init.sql
+```
+
+### 2. 后端配置
 
 ```powershell
 cd server
+# 复制配置模板，填写你自己的 Oracle 连接信息
+copy config.toml.example config.toml
+# 编辑 config.toml，修改 [database] url 中的用户名、密码、服务名
+notepad config.toml
+```
+
+### 3. 启动后端
+
+```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -63,9 +81,7 @@ python run.py
 
 初始账号：**admin / admin123**（角色：管理员）
 
-启动前请先用 `zwb` 用户执行 [database/init.sql](f:\OracleStudy\zwb-item3\database\init.sql) 初始化 Oracle 表结构和基础数据。
-
-### 2. 前端
+### 4. 启动前端
 
 ```powershell
 cd client
